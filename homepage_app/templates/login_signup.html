@@ -1,65 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>{{ title }}</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  </head>
-  <body onload="isHidden()">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">SRE</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url opposite %}">{{opposite}}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">ADD OTHER SHIT</a>
-            </li>
-          </ul>
-        </div>
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/css/login_signup.css">
+</head>
+
+<body onload="isHidden()">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">SRE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url opposite %}">{{opposite}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ADD OTHER SHIT</a>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <script type="text/javascript">
-      function isHidden() {
-        navigate = document.getElementsByName('btn')[0]
+  <h1>{{title}}</h1>
+  {% if error %}
+  <h2 class="alert alert-danger">{{ error }}</h2>
+  {% endif %}
+  <form class="form-control form" action="{% url navigate %}" method="post">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" name="username" required>
 
-        if (navigate.value == "Login"){
-          let label = document.getElementsByName('label')[0]
-          let pass2 = document.getElementsByName('pass2')[0]
+    <label for="pass1">Password:</label>
+    <input type="password" name="pass1" required>
 
-          label.style.display  = "none"
-          pass2.style.display  = "none"
+    <label for="pass2" name="label">Confirm Password:</label>
+    <input type="password" name="pass2">
 
-        }
-          console.log("hello");
-      }
-    </script>
+    <button type="submit" class="btn btn-primary" name="btn" value={{navigate}}>{{navigate}}</button>
+  </form>
+  <script src="/static/js/login_signup.js" charset="utf-8"></script>
+</body>
 
-    <h1>{{title}}</h1>
-    {% if error %}
-      <h2 class = "alert alert-danger">{{ error }}</h2>
-    {% endif %}
-    <form class="form-control form" action="{% url navigate %}" method="post">
-  {% csrf_token %}
-      <label for="username">Username:</label>
-       <input type="text" name="username" required>
-
-       <label for="pass1"></label>
-      Password: <input type="password" name="pass1" required>
-
-      <label for="pass2" name = "label">Confirm Password:</label>
-       <input type="password" name="pass2">
-
-      <button type="submit" class="btn btn-primary" name="btn" value={{navigate}}>{{navigate}}</button>
-    </form>
-
-  </body>
 </html>
