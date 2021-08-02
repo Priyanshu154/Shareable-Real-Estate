@@ -17,7 +17,11 @@ def index(request):
         return render(request, 'homepage.html')
 
 def signup(request):
-    signup = {'title':'Signup','navigate':'Signup'}
+
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    signup = {'title':'Signup','navigate':'Signup','opposite':'Login'}
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -27,7 +31,7 @@ def signup(request):
         if pass1 == pass2:
              try:
                 user = User.objects.get(username = request.POST['username']) # to check if user exists
-                return render(request,'login_signup.html',{'title':'Signup','navigate':'Signup','error':'WARNING ! Username Already Exist,Choose A Different Username.'})
+                return render(request,'login_signup.html',{'title':'Signup','navigate':'Signup','error':'WARNING ! Username Already Exist,Choose A Different Username.','opposite':'Login'})
 
              except User.DoesNotExist:
                  user = User.objects.create_user(username,password = pass1)
@@ -37,7 +41,11 @@ def signup(request):
         return render(request,'login_signup.html',signup)
 
 def login(request):
-    login = {'title':'Login','navigate':'Login'}
+
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    login = {'title':'Login','navigate':'Login','opposite':'Signup'}
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -48,7 +56,12 @@ def login(request):
             auth.login(request,user)
             return redirect('home')
         else:
-            return render(request,'login_signup.html',{'title':'Login','navigate':'Login','error':'Username or password wrong!!!'})
+            return render(request,'login_signup.html',{'title':'Login','navigate':'Login','error':'Username or password wrong!!!','opposite':'Signup'})
 
     else:
         return render(request,'login_signup.html',login)
+
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('home')
