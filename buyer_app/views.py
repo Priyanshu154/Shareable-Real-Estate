@@ -22,3 +22,5 @@ def buyed_share(request):
         )
         obj.save()
 
+##Tanmay No Lodo Nathi
+
