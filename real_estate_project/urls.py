@@ -21,4 +21,10 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('homepage_app.urls')),
+<<<<<<< HEAD
 + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+=======
+    path('buyer/', include('buyer_app.urls')),
+    path('seller/', include('seller_app.urls')),
+]
+>>>>>>> parent of 4018114 (x)

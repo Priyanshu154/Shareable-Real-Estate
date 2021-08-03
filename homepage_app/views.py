@@ -7,11 +7,17 @@ def index(request):
     if request.method == 'POST':
         login = request.POST.get('login')
         signup = request.POST.get('signup')
+        buyer = request.POST.get('buyer')
+        seller = request.POST.get('seller')
 
         if login:
             return redirect('Login')
-        else:
+        elif signup:
             return redirect('Signup')
+        elif buyer:
+            return redirect('buyer')
+        elif seller:
+            return redirect('seller')
 
     else:
         return render(request, 'homepage.html')
@@ -37,6 +43,8 @@ def signup(request):
                  user = User.objects.create_user(username,password = pass1)
                  auth.login(request,user) # to login
                  return redirect('home')
+        else:
+            return render(request,'login_signup.html',{'title':'Signup','navigate':'Signup','error':'WARNING ! Passwords Dont Match.','opposite':'Login'})
     else:
         return render(request,'login_signup.html',signup)
 
@@ -56,7 +64,7 @@ def login(request):
             auth.login(request,user)
             return redirect('home')
         else:
-            return render(request,'login_signup.html',{'title':'Login','navigate':'Login','error':'Username or password wrong!!!','opposite':'Signup'})
+            return render(request,'login_signup.html',{'title':'Login','navigate':'Login','error':'WARNING ! Username or password wrong!!!','opposite':'Signup'})
 
     else:
         return render(request,'login_signup.html',login)
