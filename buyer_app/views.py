@@ -2,11 +2,8 @@ from django.shortcuts import render
 from seller_app.models import *
 from .models import *
 
+
 # Create your views here.
-
-""" buyer_data = {prop_id1 ,}
-"""
-
 
 def buyed_share(request):
     buyer_data = {'prop_id': 1, 'buy_share': 5, 'money': 5000000}
@@ -22,5 +19,7 @@ def buyed_share(request):
         )
         obj.save()
 
+
 def buyer_home(request):
-    return render(request,'buyer_home.html')
+    list_of_prop = Property.objects.filter(no_of_shares__gt = 0).values()
+    return render(request, 'buyer_home.html',list_of_prop)

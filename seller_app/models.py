@@ -9,6 +9,7 @@ class Property(models.Model):
     area = models.FloatField(null=True, blank=True, default=None)
     address = models.TextField(null=True, blank=True, default=None)
     city = models.CharField(null=True, blank=True, default=None,max_length=1000)
+    state = models.CharField(null=True, blank=True, default=None, max_length=1000)
     resale = models.BooleanField(null=True, blank=True, default=None)
     bhk = models.IntegerField(null=True, blank=True, default=None)
     rera_approved = models.BooleanField(null=True, blank=True, default=None)
