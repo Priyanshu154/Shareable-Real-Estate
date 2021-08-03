@@ -21,6 +21,3 @@ def buyed_share(request):
             buyer_share=int(buyer_data['buy_share']),
         )
         obj.save()
-
-##Tanmay No Lodo Nathi
-
