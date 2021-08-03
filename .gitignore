@@ -9,7 +9,7 @@
 db.sqlite3
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-/__pycache__/
+__pycache__
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
