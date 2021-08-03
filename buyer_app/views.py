@@ -20,6 +20,12 @@ def buyed_share(request):
         obj.save()
 
 
+def buy(request,id):
+    prop = Property.objects.filter(id=id)
+    print(prop)
+    return render(request,'buy.html',{'prop':prop[0]})
+
+
 def buyer_home(request):
-    list_of_prop = Property.objects.filter(no_of_shares__gt = 0).values()
-    return render(request, 'buyer_home.html',list_of_prop)
+    list_of_prop = Property.objects.filter(no_of_shares__gt = 0)
+    return render(request, 'buyer_home.html',{'list':list_of_prop})

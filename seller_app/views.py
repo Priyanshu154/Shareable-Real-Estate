@@ -24,7 +24,6 @@ def sell_form(request):
         phone_number = request.POST.get('number')
         email = request.POST.get('email')
 
-        return render(request, 'sell.html',
-                      {'success': "Your Response has been recorded, We'll reach out to you soon!"})
+        return render(request, 'sell.html',{'success': "Your Response has been recorded, We'll reach out to you soon!"})
     else:
         return render(request, 'sell.html')

@@ -7,7 +7,7 @@
   <title>Buyer Home</title>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="/static/css/buyer_home.css">
+  <link rel="stylesheet" href="/static/css/buy.css">
 </head>
 
 <body>
@@ -27,41 +27,23 @@
           <li class="nav-item">
             <a class="nav-link" id="logout" aria-current="page" onclick="document.getElementById('form-id').submit()">Logout</a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'seller' %}">Sell Real Estate</a>
-          </li>
-
           {% endif %}
         </ul>
       </div>
     </div>
   </nav>
 
-  <h1>Browse Properties Happy Buying!</h1>
+  <h1>Property-Detail Page</h1>
 
 <div class="section">
   <div class="container-fluid">
-    <div class="row">
-  {% for item in list %}
-      <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card" style="width: 18rem;">
-          <img src="{{ item.prop_image.url }}" class="card-img-top center" alt="card-img- {{ item.id }}">
-          <div class="card-body">
-            <h5 class="card-title"> Shares Availabe: {{ item.no_of_shares }} / {{ item.max_no_of_shares }}</h5>
-            <p class="card-text">A {{ item.area }} Sq.Ft. Propery In {{ item.city }}, {{ item.state }}</p>
-            <a href="{% url 'buy' item.id  %}" class="btn btn-primary">View Property</a>
-          </div>
-        </div>
-      </div>
-  {% endfor %}
-    </div>
+     <img src="{{ prop.prop_image.url }}" alt="">
+
   </div>
 </div>
 
 
-
-  <script src="/static/js/buyer_home.js" charset="utf-8"></script>
+  <script src="/static/js/buy.js" charset="utf-8"></script>
 </body>
 
 </html>

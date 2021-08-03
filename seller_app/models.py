@@ -15,6 +15,7 @@ class Property(models.Model):
     rera_approved = models.BooleanField(null=True, blank=True, default=None)
     prop_image = models.ImageField(upload_to='prop_images', default=None)
     no_of_shares = models.IntegerField(null=True, blank=True, default=None)
+    max_no_of_shares = models.IntegerField(null=True, blank=True, default=None)
     price_per_share = models.FloatField(null=True, blank=True, default=None)
 
 
