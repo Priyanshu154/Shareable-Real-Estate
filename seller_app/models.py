@@ -17,9 +17,20 @@ class Property(models.Model):
     no_of_shares = models.IntegerField(null=True, blank=True, default=None)
     max_no_of_shares = models.IntegerField(null=True, blank=True, default=None)
     price_per_share = models.FloatField(null=True, blank=True, default=None)
+    predicted_price = models.FloatField(null=True, blank = True)
+    approved = models.BooleanField(null=False, blank=False, default= False)
 
 
 class Seller(models.Model):
     seller_details = models.ForeignKey(User, on_delete=models.CASCADE, null=False, default=None)
     proposed_price = models.FloatField(null=True, blank=True, default=None)
     property_details = models.ForeignKey(Property, on_delete=models.CASCADE, null=False, default=None)
+
+class city(models.Model):
+    name = models.CharField(max_length=70, null =False, blank = False)
+    latitude = models.FloatField(null = False)
+    longitude = models.FloatField(null=False)
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = 'Cities'
