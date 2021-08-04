@@ -7,6 +7,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media
+.idea/
 users/.env
 E_Voting_System/.env
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
@@ -156,3 +157,7 @@ Thumbs.db
 .prof
 
 .vs/
+.idea/workspace.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/misc.xml
+*__pycache__*
