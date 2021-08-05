@@ -48,7 +48,7 @@
         <div class="card" style="width: 18rem;">
           <img src="{{ item.prop_image.url }}" class="card-img-top center" alt="card-img- {{ item.id }}">
           <div class="card-body">
-            <h5 class="card-title"> Shares Availabe: {{ item.no_of_shares }} / {{ item.max_no_of_shares }}</h5>
+            <h5 class="card-title"> Shares Available: {{ item.no_of_shares }} / {{ item.max_no_of_shares }}</h5>
             <p class="card-text">A {{ item.area }} Sq.Ft. Propery In {{ item.city }}, {{ item.state }}</p>
             <a href="{% url 'buy' item.id  %}" class="btn btn-primary">View Property</a>
           </div>

@@ -58,7 +58,7 @@ def sell_form(request):
                      bhk = int(bhk) if bhk != '' else 0,
                      rera_approved= rera_approved, prop_image= image,
                      max_no_of_shares = max_no_of_shares,
-                     no_of_shares =0,
+                     no_of_shares =max_no_of_shares,
                      price_per_share = price_per_share,
                      predicted_price=finalized_price(float(proposed_price), predicted_price),
 
