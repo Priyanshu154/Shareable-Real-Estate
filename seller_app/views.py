@@ -2,6 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 import pickle
 import os
+from django.core.mail import send_mail
+from django.views.decorators.http import require_http_methods
+
+from real_estate_project import settings
 from .models import city, Property, Seller
 from xgboost import XGBRegressor
 import numpy as np
@@ -67,6 +71,27 @@ def sell_form(request):
         seller = Seller( seller_details = request.user, proposed_price=proposed_price, property_details= p )
         seller.save()
 
+        subject = 'welcome to GFG world'
+        message = f'Hi, thank you for registering in geeksforgeeks.'
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [email, ]
+        send_mail(subject, message, email_from, recipient_list)
         return render(request, 'sell.html',{'success': "Your Response has been recorded, We'll reach out to you soon!"})
     else:
         return render(request, 'sell.html')
+
+@require_http_methods( ['GET', 'POST']  )
+def approve_property(request,id):
+    if request.method=='GET':
+        prop = Property.objects.get(id=id)
+        return render(request, 'approve.html', {'prop': prop})
+    else:
+        response = request.POST.get('response',False)
+        prop = Property.objects.get(id=id)
+        if response == "False":
+            prop.delete()
+            return redirect('home')
+        else:
+            prop.approved = True
+            prop.save()
+            return render(request,'approve.html', {'prop': prop,'status': True})

@@ -1,8 +1,13 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 
 # Create your views here.
+from buyer_app.models import Buyer
+from seller_app.models import Seller
+
+
 def index(request):
     if request.method == 'POST':
         login = request.POST.get('login')
@@ -73,3 +78,10 @@ def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         return redirect('home')
+
+@login_required(login_url ='/login')
+def profile(request):
+    buyer = Buyer.objects.filter(buyer_details = request.user)
+    seller = Seller.objects.filter(seller_details= request.user )
+
+    return render( request, 'profile.html', {'buyer': buyer, 'seller': seller} )

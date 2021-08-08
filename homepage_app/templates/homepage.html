@@ -24,9 +24,11 @@
             {% csrf_token %}
           </form>
 
+
           <li class="nav-item">
             <a class="nav-link" id="logout" aria-current="page" onclick="document.getElementById('form-id').submit()">Logout</a>
           </li>
+
 
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{% url 'buyer' %}">Buy</a>
@@ -34,6 +36,10 @@
 
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{% url 'seller' %}">Sell</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" id="profile" aria-current="page" href = '/profile' >Profile</a>
           </li>
 
           {% else %}

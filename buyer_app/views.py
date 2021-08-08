@@ -65,7 +65,7 @@ def buyed_share(request,prop_id, buy_shares):
                 except Exception as e:
                     print(e)
                     # if there is an error while capturing payment.
-                    return redirect(f'payment_failure/{prop_id}/{buy_shares}/{razorpay_order_id}')
+                    return redirect(f'payment_failure/p{prop_id}/{buy_shares}/{razorpay_order_id}')
             else:
                 print('here2')
                 # if signature verification fails.
@@ -89,9 +89,9 @@ def buy(request,id):
     else:
         currency = 'INR'
         prop_id = int(request.POST.get('prop_id'))
-        prop = Property.objects.get(id=1)
+        prop = Property.objects.get(id=request.POST.get('prop_id'))
         no_of_shares = int(request.POST.get('no_of_shares'))
-        amount = prop.price_per_share * no_of_shares# Rs. 200
+        amount = prop.price_per_share * no_of_shares * 100  #Since the amount should be in paisa
 
         # Create a Razorpay Order
         razorpay_order = razorpay_client.order.create(dict(amount=amount,

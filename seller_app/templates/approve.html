@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Property Approve</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="card text-white border-primary mb-3" style="width: 18rem;">
+  <img src="{{prop.prop_image.url}}" class="card-img-top" alt="...">
+  <div class="card-body text-primary">
+    <h5 class="card-title">Approve</h5>
+      <p class="card-text">
+          <ul>
+            <li>  <strong>Final Price: </strong> {{prop.predicted_price}} </li>
+            <li>  <strong>Area: </strong> {{prop.area}} </li>
+            <li>  <strong>Address: </strong> {{prop.address}} </li>
+            <li>  <strong>City: </strong> {{prop.city}} </li>
+            <li>  <strong>State: </strong> {{prop.state}} </li>
+            <li>  <strong>Maximum no of shares: </strong> {{prop.max_no_of_shares}} </li>
+        </ul>
+    <form id="approve_form" action = "/seller/approve/{{prop.id}}" method = "POST">
+      {%csrf_token%}
+            <input type ="radio" name = "response" value = "True" class="btn btn-success">Approve</input>
+<!--            <input type = "radio" name = "response" value = false-->
+
+          <input type="radio" class="btn-check" name="response" value = "True" id="success-outlined" autocomplete="off" checked
+            onclick="document.getElementById('approve_form').submit()">
+          <label class="btn btn-outline-success" for="success-outlined">Approve</label>
+
+          <input type="radio" class="btn-check" name="response" value ="False" id="danger-outlined" autocomplete="off"
+          onclick="document.getElementById('approve_form').submit()">
+          <label class="btn btn-outline-danger" for="danger-outlined">Reject</label>
+    </form>
+      </p>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+<button style="display:none" id = "modal_success" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Approve Success</h5>
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+      </div>
+      <div class="modal-body">
+        The property has been successfully sold by you. You will receive the dealed price shortly
+      </div>
+      <div class="modal-footer">
+        <a href = "/" type="button" class="btn btn-success">Go to home</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    {%if status%}
+       document.getElementById('modal_success').click()
+    {%endif%}
+</script>
+</body>
+</html>

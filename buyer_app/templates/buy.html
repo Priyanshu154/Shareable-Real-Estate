@@ -43,6 +43,7 @@
      <img src="{{ prop.prop_image.url }}" alt="">
     <form action = '' method = "post">
       <label for = "no_of_shares">No of shares you want to buy (Max: {{prop.no_of_shares}})</label>
+      {{prop.state}}
       <input id = "no_of_shares" type = "number" min ="1" max = "{{ prop.no_of_shares }}" value = "1" name = "no_of_shares"  required>
 <!--      <div class="btn btn-primary">-->
         <!-- Payment Button -->
