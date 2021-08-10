@@ -25,7 +25,7 @@ SECRET_KEY = '$4l&awa%b^s-y(+c5o_n%3!ed$2x!)(gr(1jzacbb%@uj)a%3h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.101','localhost']
 
 RAZOR_KEY_ID = "rzp_test_Xx2uoyrz9mcc8g"
 RAZOR_KEY_SECRET = "iNCMtMDwbeiKS8HVBILcXhkm"
@@ -71,7 +71,7 @@ ROOT_URLCONF = 'real_estate_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
