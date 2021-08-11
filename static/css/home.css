@@ -1,3 +1,23 @@
+/* This file is base css which is also for other files eg: navbar */
 #logout:hover{
   cursor: pointer;
+}
+
+.navbar .navbar-expand-lg{
+  background-color: #867AE9;
+}
+
+.navbar-brand,.nav-link{
+  color: #000000;
+}
+
+.navbar-brand:hover,.nav-link:hover{
+  color: #272727;
+}
+h1{
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  background-color:#FFF5AB;
+  font-weight:600;
 }

@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+{% load static %}
   <head>
     <meta charset="utf-8">
     <title>Real Estate</title>
@@ -8,10 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="static/css/homepage.css">
     <script src="static/js/home.js" charset="utf-8"></script>
   </head>
+
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">SRE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,15 +57,33 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid">
-      <br><br>
-      <h1>Welcome to Real Estate Stock</h1>
+
+      <h1>Welcome to Real Estate Stocks</h1>
+    <section>
+
       <h2>What is shareable real Estate ?</h2>
-      <p>blah blah info lakho koi mane kantado aave che</p>
-      <br><br>
+
+      <p>
+        People Buy Houses/Properties to live in or some buy it just as an Asset.
+        Now, not all people are able to buy a whole property by thier own.
+        Especially if the property is worth 10s of 100s of lakhs.
+        So we came up with a solution.
+        Our Company [SRE] buys the whole property for it's users to invest in.
+        So when the price of a property goes up, so does the profit of each user who invested in it.
+        It basically is like a stock market but for Real Estate except there are bonds for shares of property you buy.
+        The basic difference between a stock market & this startup is that after company's target
+        is achieved for a particular property for the profit of it's users & for the company itself,
+        we sell the property & return the profit to the users.
+
+
+      </p>
+
+
+    </section>
+      <div class="container-fluid">
       {% if user.is_authenticated %}
 
-      <form class="form form-control" action="" {% url 'home' %}"" method="post">
+      <form class="" action="" {% url 'home' %}"" method="post">
         {% csrf_token %}
         <button class="btn btn-primary" type="submit" name="buyer" value="Buyer">Buy Real Estate.</button>
 
@@ -71,7 +91,7 @@
       </form>
 
       {% else %}
-      <form class="form form-control" action="" {% url 'home' %}"" method="post">
+      <form class="" action="" {% url 'home' %}"" method="post">
         {% csrf_token %}
         <button class="btn btn-primary" type="submit" name="login" value="Login">Login</button>
 
