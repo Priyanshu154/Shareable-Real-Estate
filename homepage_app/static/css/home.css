@@ -3,22 +3,16 @@
   cursor: pointer;
 }
 
-.navbar{
+/* .navbar{
   background-color: #867AE9 !important;
+} */
+p{
+  text-align: left;
 }
-
-.navbar-brand,.nav-link{
-  color: #000000 !important;;
+.img-fluid{
+  width:80% ;
+  height:80%;
 }
-
-.navbar-brand:hover,.nav-link:hover{
-  color: #272727 !important;
-}
-
-h1{
-  text-align: center;
-  padding: 20px;
-  margin: 0;
-  background-color:#FFF5AB;
-  font-weight:600;
+.row{
+  margin: 6%;
 }
