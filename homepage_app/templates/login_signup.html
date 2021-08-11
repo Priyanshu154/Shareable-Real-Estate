@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 {% load static %}
+
 <head>
   <meta charset="utf-8">
   <title>{{ title }}</title>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-
-
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{% static '/css/home.css' %}"> <!-- Home page app's Home.css -->
+  <link rel="stylesheet" href="{% static '/css/login_signup.css' %}"> <!-- Home page app's Home.css -->
 </head>
 
 <body onload="isHidden()">
 
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'home' %}">SRE</a>
+      <a class="navbar-brand " href="{% url 'home' %}"><img src="https://img.icons8.com/wired/40/000000/real-estate.png" /></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,22 +40,35 @@
 
   <h1>{{title}}</h1>
   {% if error %}
-  <h2 class="alert alert-danger">{{ error }}</h2>
+  <h1 class="alert alert-danger">{{ error }}</h1>
   {% endif %}
-  <form class="form-control form" action="{% url navigate %}" method="post">
-    {% csrf_token %}
-    <label for="username">Username:</label>
-    <input type="text" name="username" required>
 
+  <div>
+    <div class="card center">
+      <div class="card-body">
+        <form class="" action="{% url navigate %}" method="post">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" name="username" autocomplete="off" placeholder="Username" required>
+          </div>
 
-    <label for="pass1">Password:</label>
-    <input type="password" name="pass1" required>
+          <div class="mb-4">
+            <label for="pass1">Password:</label>
+            <input type="password" class="form-control" name="pass1" autocomplete="off" placeholder="Password" required>
+          </div>
 
-    <label for="pass2" name="label">Confirm Password:</label>
-    <input type="password" name="pass2">
-
-    <button type="submit" class="btn btn-primary" name="btn" value={{navigate}}>{{navigate}}</button>
-  </form>
+          <div class="mb-4">
+            <label for="pass2" name="label">Confirm Password:</label>
+            <input type="password" class="form-control" name="pass2" autocomplete="off" placeholder="Enter Password Again">
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg" name="btn" value={{navigate}}>{{navigate}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <script src="/static/js/login_signup.js" charset="utf-8"></script>
 </body>
 

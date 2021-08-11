@@ -2,17 +2,40 @@
 #logout:hover{
   cursor: pointer;
 }
+/* B980F0 */
+.navbar-brand{
+    color: #000000 !important;;
+  }
 
-/* .navbar{
-  background-color: #867AE9 !important;
-} */
-p{
-  text-align: left;
-}
-.img-fluid{
-  width:80% ;
-  height:80%;
-}
-.row{
-  margin: 6%;
+.navbar .nav-link{
+  padding-left: 6%;
+  }
+
+.navbar-brand:hover{
+    color: #272727 !important;
+  }
+
+  .nav-link{
+    color: rgb(70, 70, 70) !important;
+    font-size: large;
+    font-family: 'Atkinson Hyperlegible', sans-serif !important;
+  }
+
+  .nav-link:hover{
+    color: rgb(238, 232, 232) !important;
+    text-decoration: underline !important;
+  }
+
+  a.navbar-brand{
+    margin-left: 5%;
+  }
+
+h1{
+  text-align: center;
+  padding: 0.5em;
+  margin: 0;
+  font-family: 'Bree Serif', serif !important;
+  color:#272727;
+  /* background-color:#FFF5AB; */
+  font-weight:600;
 }

@@ -75,7 +75,7 @@ def sell_form(request):
         message = f'Hi, thank you for registering in geeksforgeeks.'
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [email, ]
-        send_mail(subject, message, email_from, recipient_list)
+        # send_mail(subject, message, email_from, recipient_list)
         return render(request, 'sell.html',{'success': "Your Response has been recorded, We'll reach out to you soon!"})
     else:
         return render(request, 'sell.html')

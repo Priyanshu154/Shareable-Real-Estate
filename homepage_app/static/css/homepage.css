@@ -1,46 +1,26 @@
-#logout:hover{
-    cursor: pointer;
-  }
-  
-.navbar-brand{
-    color: #000000 !important;;
-  }
-  
-  .navbar-brand:hover,.nav-link:hover{
-    color: #272727 !important;
-  }
-  /* li{
-      align-content: flex-end !important;
-      text-align: right;
-  } */
-  /* .navel{
-      text-align: right !important;
-  } */
-  .nav-link{
-    color: rgb(70, 70, 70) !important;
-    font-size: large;
-    font-family: 'Atkinson Hyperlegible', sans-serif !important;
-  }
-  .nav-link:hover{
-    color: rgb(238, 232, 232) !important;
-    text-decoration: underline !important;
-  }
+
   body{
     background-color: rgb(221, 240, 248) !important;
     /* background-image: url(C:\\Users\\kedar\\Downloads\\Untitles.svg) !important; */
   }
   h2{
+    text-align: center;
+    margin: 3%;
     font-family: 'Patua One', cursive;
     color:rgb(51, 51, 51);
   }
-  h1{
-    text-align: center;
-    padding: 0.5em;
-    margin: 0;
-    font-family: 'Bree Serif', serif !important;
-    color:#272727;
-    /* background-color:#FFF5AB; */
-    font-weight:600;
+
+
+  p{
+    text-align: left;
   }
-  
-  
+  .img-fluid{
+    width:80% ;
+    height:80%;
+  }
+  .btn{
+    margin-right: 2rem;
+  }
+section{
+    margin: 5%;
+  }

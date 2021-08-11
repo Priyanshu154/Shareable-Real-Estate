@@ -6,22 +6,20 @@ h1{
   text-align: center;
 }
 
-.container-fluid{
+.container{
   margin: auto;
 }
 
-.card-img-top{
-  height: 200px;
-  width: 200px;
-}
-
 .card{
-  margin: 20px;
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 .center{
   margin: auto;
   width: 74%;
   padding: 20px;
+}
+
+section{
+  margin: 5%;
 }
