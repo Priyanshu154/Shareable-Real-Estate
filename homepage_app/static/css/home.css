@@ -14,7 +14,10 @@
 .navbar-brand:hover{
     color: #272727 !important;
   }
-
+  body{
+    background-color: rgb(228, 247, 255) !important;
+    /* background-image: url(C:\\Users\\kedar\\Downloads\\Untitles.svg) !important; */
+  }
   .nav-link{
     color: rgb(70, 70, 70) !important;
     font-size: large;
@@ -52,4 +55,8 @@ p{
   border: 0.1rem solid black;
   border-radius: 2%;
   padding: 2%;
+  font-weight: 500;
+}
+nav{
+  border-bottom: 0.1rem solid black;
 }

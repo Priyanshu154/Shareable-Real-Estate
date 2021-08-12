@@ -36,21 +36,21 @@
             </form>
 
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'buyer' %}">Buy <i class="fas fa-money-bill-wave"></i></a>
+              <a class="nav-link" aria-current="page" href="{% url 'buyer' %}">| Buy <i class="fas fa-money-bill-wave"></i></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'seller' %}">Sell <i class="fas fa-solid fa-upload"></i></a>
+              <a class="nav-link" aria-current="page" href="{% url 'seller' %}">| Sell <i class="fas fa-solid fa-upload"></i></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" id="profile" aria-current="page" href = '/profile' >Profile <i class="fas fa-solid fa-user-tie"></i></a>
+              <a class="nav-link" id="profile" aria-current="page" href = '/profile' >| Profile <i class="fas fa-solid fa-user-tie"></i></a>
             </li>
           </ul>
           <a class="nav-link nav-item" id="logout" aria-current="page" onclick="document.getElementById('form-id').submit()"><strong>Logout </strong> <i class="fas fa-lg fa-sign-out-alt"></i></a>
             {% else %}
           </ul>
-            <a class="nav-link nav-item" aria-current="page" href="{% url 'Login' %}">Login <i class="fas fa-sign-in-alt fa-lg"></i></a>
+            <a class="nav-link nav-item" aria-current="page" href="{% url 'Login' %}"> Login <i class="fas fa-sign-in-alt fa-lg"></i></a>
             {% endif %}
 
         </div>
@@ -64,17 +64,17 @@
       <div class="row">
         <div class="col-lg-5 col-sm-12 col-md-12">
           <p id="para" >
-            People Buy Houses/Properties to live in or some buy it just as an Asset.
-            Now, not all people are able to buy a whole property by thier own.
-            Especially if the property is worth 10s of 100s of lakhs.
-            So we came up with a solution.
-            Our Company [SRE] buys the whole property for it's users to invest in.
-            So when the price of a property goes up, so does the profit of each user who invested in it.
-            It basically is like a stock market but for Real Estate except there are bonds for shares of property you buy.
-            The basic difference between a stock market & this startup is that after company's target
-            is achieved for a particular property for the profit of it's users & for the company itself,
-            we sell the property & return the profit to the users.</p>
-            <div class="container-fluid">
+            We all buy Estate, either to live in or as an Asset.
+            But not Everyone is able to bestow such vanity especially if the sum is large.
+            And hence for the people like those Us at SRE's (ShareAble Real Estates) 
+            have come up with a solution to all of it.
+            We at SRE's would buy the whole Estate itself for our clients to invest in, through us..
+            our clients can buy the property or partial bonds of them in a joint venture, and when the capital rises
+            so does the profit for each individual who have invested through our join investment. Just Like the Stocks, 
+            We sell the property or return it forward after investors achieve a satisfactory margin and if interested further
+            lead them to better offers with a pool of larger benefit.
+</p>
+<div class="container-fluid">           
               {% if user.is_authenticated %}
 
               <form class="text-center" action="" {% url 'home' %}"" method="post">
