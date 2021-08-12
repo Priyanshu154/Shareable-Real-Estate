@@ -2,22 +2,58 @@
 #logout:hover{
   cursor: pointer;
 }
+/* B980F0 */
+.navbar-brand{
+    color: #000000 !important;;
+  }
 
-.navbar .navbar-expand-lg{
-  background-color: #867AE9;
-}
+.navbar .nav-link{
+  padding-left: 6%;
+  }
 
-.navbar-brand,.nav-link{
-  color: #000000;
-}
+.navbar-brand:hover{
+    color: #272727 !important;
+  }
+  body{
+    background-color: rgb(228, 247, 255) !important;
+    /* background-image: url(C:\\Users\\kedar\\Downloads\\Untitles.svg) !important; */
+  }
+  .nav-link{
+    color: rgb(70, 70, 70) !important;
+    font-size: large;
+    font-family: 'Atkinson Hyperlegible', sans-serif !important;
+  }
 
-.navbar-brand:hover,.nav-link:hover{
-  color: #272727;
-}
+  .nav-link:hover{
+    color: rgb(238, 232, 232) !important;
+    text-decoration: underline !important;
+  }
+
+  a.navbar-brand{
+    margin-left: 5%;
+  }
+
 h1{
   text-align: center;
-  padding: 20px;
+  padding: 0.2em;
   margin: 0;
-  background-color:#FFF5AB;
-  font-weight:600;
+  font-family: 'Bree Serif', serif !important;
+  color:#272727;
+  /* background-color:#FFF5AB; */
+  font-weight:500;
+}
+
+.btn{
+  background-color: rgb(230, 202, 81) !important;
+  border: rgb(41, 41, 41) !important;
+}
+
+.btn:hover{
+  background-color: rgb(209, 165, 44) !important;
+  border: rgb(49, 49, 49) !important;
+  border-width: 1rem;
+}
+
+nav{
+  border-bottom: 0.1rem solid black;
 }
