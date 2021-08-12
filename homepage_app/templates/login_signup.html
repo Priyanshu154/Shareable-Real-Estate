@@ -29,11 +29,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url opposite %}"><strong> {{opposite}} </strong><i class="fas fa-sign-in-alt fas-lg"></i></a>
-          </li>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-sm-0 mg-md-0">
         </ul>
+        <a class="nav-link nav-item" aria-current="page" href="{% url opposite %}"><strong> {{opposite}} </strong><i class="fas fa-sign-in-alt fas-lg"></i></a>
       </div>
     </div>
   </nav>
@@ -42,8 +40,6 @@
   {% if error %}
   <h1 class="alert alert-danger">{{ error }}</h1>
   {% endif %}
-
-  <div>
     <div class="card center">
       <div class="card-body">
         <form class="" action="{% url navigate %}" method="post">
@@ -62,13 +58,14 @@
             <label for="pass2" name="label">Confirm Password:</label>
             <input type="password" class="form-control" name="pass2" autocomplete="off" placeholder="Enter Password Again">
           </div>
+
           <div class="text-center">
             <button type="submit" class="btn btn-primary btn-lg" name="btn" value={{navigate}}>{{navigate}}</button>
           </div>
+
         </form>
       </div>
     </div>
-  </div>
   <script src="/static/js/login_signup.js" charset="utf-8"></script>
 </body>
 

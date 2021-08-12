@@ -1,108 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
-    <meta charset="UTF-8">
-    <title>{{ request.user.username }}</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>{{ request.user.username }}</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="{% static '/css/home.css' %}"> <!-- Home page app's Home.css -->
+  <link rel="stylesheet" href="{% static '/css/home.css' %}"> <!-- Home page app's Home.css -->
+  <link rel="stylesheet" href="{% static '/css/profile.css' %}"> <!-- Home page app's Home.css -->
 </head>
-<body>
 
-<!-- NAVBAR -->
+<body>
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <div class="container-fluid">
-      <a class="navbar-brand " href="{% url 'home' %}"><img src="https://img.icons8.com/wired/40/000000/real-estate.png"/></a>
+      <a class="navbar-brand " href="{% url 'home' %}"><img src="https://img.icons8.com/wired/40/000000/real-estate.png" /></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          {% if user.is_authenticated %}
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-sm-0 mg-md-0">
 
           <form id="form-id" action="{% url 'Logout' %}" method="post">
             {% csrf_token %}
           </form>
-          <li class="nav-item">
-            <a class="nav-link" id="logout" aria-current="page" onclick="document.getElementById('form-id').submit()"><strong>Logout </strong> <i class="fas fa-lg fa-sign-out-alt"></i></a>
-          </li>
 
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{% url 'seller' %}">Sell <i class="fas fa-solid fa-upload"></i></a>
           </li>
-          
-          {% endif %}
         </ul>
+        <a class="nav-link nav-item" id="logout" aria-current="page" onclick="document.getElementById('form-id').submit()"><strong>Logout </strong> <i class="fas fa-lg fa-sign-out-alt"></i></a>
       </div>
     </div>
   </nav>
 
-
-
-
-<div class ="section">
+  <div class="section">
     <h1> Buyed Shares</h1>
-<div class="row">
-
-  {% for b in buyer %}
-  <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card" style="width: 18rem;">
-          <img src="{{ b.buyer_property.prop_image.url }}" class="card-img-top center" alt="card-img- {{ b.buyer_property.id }}">
-          <div class="card-body">
-            <h5 class="card-title"> Shares purchased: {{b.buyer_shares}}</h5>
-            <p class="card-text">A {{ b.buyer_property.area }} Sq.Ft. Propery In {{ b.buyer_property.city }}, {{ b.buyer_property.state }}</p>
-            <a href="{% url 'buy' b.buyer_property.id  %}" class="btn btn-primary">View Property</a>
+    <div class="container">
+      <div class="row">
+        {% for b in buyer %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card centerx" style="width: 18rem;">
+            <img src="{{ b.buyer_property.prop_image.url }}" style="height:300px;" class="card-img-top center" alt="card-img- {{ b.buyer_property.id }}">
+            <div class="card-body">
+              <h5 class="card-title"> Shares purchased: {{b.buyer_shares}}</h5>
+              <p class="card-text">A {{ b.buyer_property.area }} Sq.Ft. Propery In {{ b.buyer_property.city }}, {{ b.buyer_property.state }}</p>
+              <div class="text-center">
+                <a href="{% url 'buy' b.buyer_property.id  %}" class="btn btn-primary">View Property</a>
+              </div>
+            </div>
           </div>
         </div>
+        {% endfor %}
       </div>
-{% endfor %}
+    </div>
+
   </div>
 
-</div>
+  <hr>
 
-
-
-
-<div class ="section">
+  <div class="section">
     <h1> Properties Sold to us</h1>
-<div class="row">
-
-  {% for s in seller %}
-  <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card" style="width: 18rem;">
-          <img src="{{ s.property_details.prop_image.url }}" class="card-img-top center" alt="card-img- {{ s.property_details.id }}">
-          <div class="card-body">
-            <h5 class="card-title"> Selling Price: {{s.property_details.actual_price}}</h5>
-            <p class="card-text">
+    <div class="container">
+      <div class="row">
+        {% for s in seller %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card centerx" style="width: 18rem;">
+            <img src="{{ s.property_details.prop_image.url }}" class="card-img-top center" alt="card-img- {{ s.property_details.id }}">
+            <div class="card-body">
+              <h5 class="card-title"> Selling Price: {{s.property_details.actual_price}}</h5>
+              <p class="card-text">
                 A {{ s.property_details.area }} Sq.Ft. Propery In {{ s.property_details.city }}, {{ s.property_details.state }}
-            </p>
+              </p>
 
-            <p class = "card-text"> Price: Rs. {{s.property_details.predicted_price}}
-            </p>
+              <p class="card-text"> Price: Rs. {{s.property_details.predicted_price}}
+              </p>
 
-            <p class = "card-text"> Shares available: {{s.property_details.no_of_shares}}
-            </p>
-            {% if s.property_details.approved %}
-<span class="badge bg-success">Approved</span>
-            {%else%}
-              <a href="/seller/approve/{{s.property_details.id}}" class = "btn btn-outline-primary btn-sm">Approve  </a>
-            {%endif%}
+              <p class="card-text"> Shares available: {{s.property_details.no_of_shares}}
+              </p>
+              {% if s.property_details.approved %}
+              <div class="text-center">
+                <span class="badge bg-success btn-lg">Approved</span>
+              </div>
+              {%else%}
+              <div class="text-center">
+                <a href="/seller/approve/{{s.property_details.id}}" class="btn btn-primary btn-sm">Approve </a>
+              </div>
+              {%endif%}
+            </div>
           </div>
         </div>
-  </div>
-{% endfor %}
-  </div>
+        {% endfor %}
+      </div>
+    </div>
 
-</div>
+  </div>
 
 </body>
+
 </html>

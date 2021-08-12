@@ -1,3 +1,15 @@
-#logout:hover{
-  cursor: pointer;
+div.card{
+  width: 50%;
+  height: 90%;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+.center{
+  width: 40%;
+  margin: auto;
+  border: 2px solid black;
+  border-radius: 25px;
+  box-shadow: 2px 2px grey;
+  padding: 1.3%;
 }

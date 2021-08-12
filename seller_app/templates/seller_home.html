@@ -27,31 +27,28 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-sm-0 mg-md-0">
           {% if user.is_authenticated %}
 
           <form id="form-id" action="{% url 'Logout' %}" method="post">
             {% csrf_token %}
           </form>
-
-          <li class="nav-item">
-            <a class="nav-link" id="logout" aria-current="page" onclick="document.getElementById('form-id').submit()"><strong>Logout</strong> <i class="fas fa-sign-out-alt fa-lg"></i></a>
-          </li>
-
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{% url 'buyer' %}">Buy <i class="fas fa-money-bill-wave"></i></a>
           </li>
           {% endif %}
-
         </ul>
+        <a class="nav-link nav-item" id="logout" aria-current="page" onclick="document.getElementById('form-id').submit()"><strong>Logout</strong> <i class="fas fa-sign-out-alt fa-lg"></i></a>
       </div>
     </div>
   </nav>
 
   <h1>Seller Home</h1>
 
+<div class="container">
   <h2>Procedure:</h2>
   <p>If you want to sell house/property , click <a href="{% url 'sell_form' %}">here</a>, fill the form & we'll reach out to you !</p>
+</div>
 
   <script src="static/js/seller_home.js" charset="utf-8"></script>
 </body>

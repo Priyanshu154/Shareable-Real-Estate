@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 {% load static %}
+
 <head>
   <meta charset="utf-8">
   <title>Sell</title>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
@@ -15,135 +17,123 @@
   <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
 
 
-  <link rel="stylesheet" href="static/css/sell.css">
+  <link rel="stylesheet" href="/static/css/sell.css">
   <link rel="stylesheet" href="{% static '/css/home.css' %}"> <!-- Home page app's Home.css -->
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg  navbar-dark bg-info">
     <div class="container-fluid">
-      <a class="navbar-brand " href="{% url 'home' %}"><img src="https://img.icons8.com/wired/40/000000/real-estate.png"/></a>
+      <a class="navbar-brand " href="{% url 'home' %}"><img src="https://img.icons8.com/wired/40/000000/real-estate.png" /></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          {% if user.is_authenticated %}
-
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-sm-0 mg-md-0">
           <form id="form-id" action="{% url 'Logout' %}" method="post">
             {% csrf_token %}
           </form>
-
-          <li class="nav-item">
-            <a class="nav-link" id="logout" aria-current="page" onclick="document.getElementById('form-id').submit()"><strong>Logout</strong> <i class="fas fa-sign-out-alt fa-lg"></i></a>
-          </li>
-          {% endif %}
         </ul>
+        <a class="nav-link nav-item" id="logout" aria-current="page" onclick="document.getElementById('form-id').submit()"><strong>Logout</strong> <i class="fas fa-sign-out-alt fa-lg"></i></a>
       </div>
     </div>
   </nav>
-{% if success %}
 
-<h2 class="alert alert-success">{{ success }}</h2>
+  {% if success %}
+  <h2 class="alert alert-success">{{ success }}</h2>
+  {% endif %}
 
-{% endif %}
-  <h1>Fill the below from to hear from us!</h1>
+  <div class="section">
+    <h1>Fill the below from to hear from us!</h1>
+    <div class="card center">
+      <div class="card-body">
+        <form action="{% url 'sell_form' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="name">Your Name:</label>
+            <input type="text" class="form-control" name="name" value="" required />
+          </div>
 
-  <form class="form form-control" action="{% url 'sell_form' %}" method="post" enctype="multipart/form-data">
-{% csrf_token %}
-    <div>
-      <label for="name">Your Name:</label>
-      <input type="text" name="name" value="" required />
+          <div class="mb-3">
+            <label for="image">Image of the property:</label>
+            <input type="file" class="form-control" accept="image/*" name="image" value="" required />
+          </div>
+
+
+          <label for="address">Address:</label>
+          <div class="mb-3">
+            <textarea class="form-control" name="address" rows="3" cols="30" required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="area">Area (in Sq. Ft.) :</label>
+            <input type="text" class="form-control" name="area" value="" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="city">City:</label>
+            <input type="text" class="form-control" name="city" value="" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="state">State:</label>
+            <input type="text" class="form-control" name="state" value="" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="type_of_house">Type of House:</label>
+            <select name="type_of_house" class="form-control" id="type" required onclick="isVisible()" value="BHK">
+              <option value="BHK">BHK(Bedroom, Hall, Kitchen)</option>
+              <option value="RK">RK(Room Kitchen)</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="bhk" id="bhk1">No of Bedrooms:</label>
+            <input type="number" class="form-control" id="bhk2" name="bhk" value="">
+          </div>
+
+          <div class="mb-3">
+            <label for="resale">Resale:</label>
+            <select class="" name="resale" class="form-control" required>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div class="mb-3">
+
+          <div class="mb-3">
+            <label for="rera">RERA Approved:</label>
+            <select class="" class="form-control" name="rera" required>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+
+
+          <div class="mb-3">
+            <label for="p_price">Proposed Price(Rs):</label>
+            <input type="number" class="form-control" name="p_price" value="" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="number">Phone Number:</label>
+            <input type="number" class="form-control" name="number" value="" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" name="email" value="" required />
+          </div>
+
+          <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-primary" name="button">Submit Details</button>
+          </div>
+
+        </form>
+      </div>
     </div>
-
-    <br>
-    <div>
-      <label for="image">Image of the property:</label>
-      <input type="file" accept="image/*" name="image" value="" required/>
-    </div>
-
-    <br>
-
-    <label for="address">Address:</label>
-    <div>
-      <textarea name="address" rows="3" cols="30" required></textarea>
-    </div>
-
-    <br>
-    <div>
-      <label for="area">Area (in Sq. Ft.) :</label>
-      <input type="text" name="area" value="" required />
-    </div>
-
-    <br>
-    <div>
-      <label for="city">City:</label>
-      <input type="text" name="city" value="" required />
-    </div>
-
-    <br>
-    <div>
-      <label for="state">State:</label>
-      <input type="text" name="state" value="" required />
-    </div>
-
-    <br>
-    <div>
-      <label for="type_of_house">Type of House:</label>
-      <select name="type_of_house" id="type" required onclick="isVisible()" value="BHK">
-        <option value="BHK">BHK(Bedroom, Hall, Kitchen)</option>
-        <option value="RK">RK(Room Kitchen)</option>
-      </select>
-    </div>
-
-    <br>
-    <div>
-      <label for="bhk" id="bhk1">No of Bedrooms:</label>
-      <input type="number" id="bhk2" name="bhk" value="">
-    </div>
-
-    <br>
-    <div>
-      <label for="resale">Resale:</label>
-      <select class="" name="resale" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </div>
-
-    <br>
-    <div>
-      <label for="rera">RERA Approved:</label>
-      <select class="" name="rera" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </div>
-
-    <br>
-    <div>
-      <label for="p_price">Proposed Price(Rs):</label>
-      <input type="number" name="p_price" value="" required />
-    </div>
-
-    <br>
-    <div>
-      <label for="number">Phone Number:</label>
-      <input type="number" name="number" value="" required />
-    </div>
-
-    <br>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" name="email" value="" required />
-    </div>
-
-    <br>
-
-    <button type="submit" class="btn btn-primary" name="button">Submit Details</button>
-
-    <script src="/static/js/sell.js" charset="utf-8"></script>
-  </form>
+  </div>
+  <script src="/static/js/sell.js" charset="utf-8"></script>
 </body>
 
 </html>
