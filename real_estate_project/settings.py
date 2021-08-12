@@ -25,19 +25,12 @@ SECRET_KEY = '$4l&awa%b^s-y(+c5o_n%3!ed$2x!)(gr(1jzacbb%@uj)a%3h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.101','localhost']
+ALLOWED_HOSTS = ['192.168.0.106','localhost']
 
 RAZOR_KEY_ID = "rzp_test_Xx2uoyrz9mcc8g"
 RAZOR_KEY_SECRET = "iNCMtMDwbeiKS8HVBILcXhkm"
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = "shareable" #sender's email-id
-EMAIL_HOST_PASSWORD = "estate_21364352" #password associated with above email-id
 
 DEFAULT_FROM_EMAIL = 'shareable.real.estate@gmail.com'
 SERVER_EMAIL = 'shareable.real.estate@gmail.com'

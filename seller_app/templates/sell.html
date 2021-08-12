@@ -71,8 +71,18 @@
           </div>
 
           <div class="mb-3">
-            <label for="city">City:</label>
-            <input type="text" class="form-control" name="city" value="" required />
+            <label for="actual_city">City/Town/Village Name:</label>
+            <input type="text" class="form-control" name="actual_city" value="" required />
+          </div>
+
+          <div class="mb-3">
+            <label for ="nearest_city"> Nearest City: </label>
+            <select id="nearest_city" required name ="nearest_city" class="form-select" aria-label="Default select example">
+              <option value ="" disabled selected> Select Your nearest city</option>
+              {% for city in cities %}
+              <option value= {{city.id}}>{{city.name}}</option>
+              {%endfor%}
+            </select>
           </div>
 
           <div class="mb-3">

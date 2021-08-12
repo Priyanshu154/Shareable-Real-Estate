@@ -4,31 +4,94 @@
 <head>
     <meta charset="UTF-8">
     <title>Property Approve</title>
+
+  <link rel="stylesheet" href="{% static '/css/home.css' %}"> <!-- Home page app's Home.css -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static '/css/profile.css' %}"> <!-- Home page app's Home.css -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static '/css/home.css' %}"> <!-- Home page app's Home.css -->
 </head>
 
 <body>
-<div class="card text-white border-primary mb-3" style="width: 18rem;">
+<!--  NAVBAR -->
+<style>
+@media (min-width: 300px) and (max-width: 600px) {
+  #card_approve {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 600px) {
+  #card_approve {
+    width: 18rem;
+  }
+}
+</style>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+      <div class="container-fluid">
+        <a class="navbar-brand " href="{% url 'home' %}"><img src="https://img.icons8.com/wired/40/000000/real-estate.png"/></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-sm-0 mg-md-0">
+
+            {% if user.is_authenticated %}
+
+            <form id="form-id" action="{% url 'Logout' %}" method="post">
+              {% csrf_token %}
+            </form>
+
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'buyer' %}">| Buy <i class="fas fa-money-bill-wave"></i></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'seller' %}">| Sell <i class="fas fa-solid fa-upload"></i></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="profile" aria-current="page" href = '/profile' >| Profile <i class="fas fa-solid fa-user-tie"></i></a>
+            </li>
+          </ul>
+          <a class="nav-link nav-item" id="logout" aria-current="page" onclick="document.getElementById('form-id').submit()"><strong>Logout </strong> <i class="fas fa-lg fa-sign-out-alt"></i></a>
+            {% else %}
+          </ul>
+            <a class="nav-link nav-item" aria-current="page" href="{% url 'Login' %}"> Login <i class="fas fa-sign-in-alt fa-lg"></i></a>
+            {% endif %}
+
+        </div>
+      </div>
+    </nav>
+
+<div class ="container-fluid" align="center">
+<div class="card text-white border-primary mb-3" id="card_approve">
   <img src="{{prop.prop_image.url}}" class="card-img-top" alt="...">
   <div class="card-body text-primary">
-    <h5 class="card-title">Approve</h5>
+    <h5 class="card-title">Property Details</h5>
       <p class="card-text">
-          <ul>
+          <ul align="left">
             <li>  <strong>Final Price: </strong> {{prop.predicted_price}} </li>
             <li>  <strong>Area: </strong> {{prop.area}} </li>
             <li>  <strong>Address: </strong> {{prop.address}} </li>
             <li>  <strong>City: </strong> {{prop.city}} </li>
             <li>  <strong>State: </strong> {{prop.state}} </li>
-            <li>  <strong>Maximum no of shares: </strong> {{prop.max_no_of_shares}} </li>
+            <li>  <strong>Max. no of shares: </strong> {{prop.max_no_of_shares}} </li>
         </ul>
     <form id="approve_form" action = "/seller/approve/{{prop.id}}" method = "POST">
       {%csrf_token%}
-            <input type ="radio" name = "response" value = "True" class="btn btn-success">Approve</input>
-<!--            <input type = "radio" name = "response" value = false-->
-
-          <input type="radio" class="btn-check" name="response" value = "True" id="success-outlined" autocomplete="off" checked
+          <input type="radio" class="btn-check" name="response" value = "True" id="success-outlined" autocomplete="off"
             onclick="document.getElementById('approve_form').submit()">
           <label class="btn btn-outline-success" for="success-outlined">Approve</label>
 
@@ -67,5 +130,7 @@
        document.getElementById('modal_success').click()
     {%endif%}
 </script>
+</div>
+
 </body>
 </html>

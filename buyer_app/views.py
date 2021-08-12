@@ -80,7 +80,7 @@ def buyed_share(request,prop_id, buy_shares):
         return HttpResponseBadRequest()
 
 
-
+@login_required(login_url='/login')
 @require_http_methods(['GET', 'POST'] )
 def buy(request,id):
     if(request.method == 'GET'):
@@ -92,7 +92,9 @@ def buy(request,id):
         prop = Property.objects.get(id=request.POST.get('prop_id'))
         no_of_shares = int(request.POST.get('no_of_shares'))
         amount = prop.price_per_share * no_of_shares * 100  #Since the amount should be in paisa
-
+        print(amount)
+        if amount > 5*1e5*1e2:
+            return HttpResponseBadRequest()
         # Create a Razorpay Order
         razorpay_order = razorpay_client.order.create(dict(amount=amount,
                                                            currency=currency,
@@ -113,7 +115,7 @@ def buy(request,id):
         context['prop'] = prop
         return render(request, 'buy.html', context)
 
-
+@login_required(login_url='/login')
 def buyer_home(request):
     list_of_prop = Property.objects.filter(no_of_shares__gt = 0, approved =True)
     print(list_of_prop)

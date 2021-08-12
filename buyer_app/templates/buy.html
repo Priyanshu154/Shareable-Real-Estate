@@ -46,13 +46,26 @@
   <section>
     <div class="container-fluid center">
       <img src="{{ prop.prop_image.url }}" class="container-fluid" alt="">
-      <form action='' method="post">
-        <label for="no_of_shares">No of shares you want to buy (Max: {{prop.no_of_shares}})</label>
-        {{prop.state}}
-        <input id="no_of_shares" type="number" min="1" max="{{ prop.no_of_shares }}" value="1" name="no_of_shares" required>
-        <div class="text-center">
+      <ul>
+        <li> Area: {{prop.area}} Sq. Ft</li>
+        <li> Address: <br>{{prop.address}}</li>
+        <li> City: {{prop.city}}</li>
+        <li> Resale: {% if prop.resale == True%} Yes {%else%} No {%endif%}</li>
+        {% if prop.bhk > 0 %}
+        <li> Type: {{prop.bhk}}BHK </li>
+        {%else%}
+        <li> Type: RK</li>
+        {%endif%}
 
-          <input type="submit" class="btn btn-primary mb-4 mt-4 " id="pay-btn">
+      </ul>
+      <form action='' method="post">
+        <label for="no_of_shares" id = "label_shares"></label>
+        <input id="no_of_shares" type="number" min="1" max="max_shares" name="no_of_shares" onchange="change_price()" onclick = "change_price()"required>
+        <p style="border: None; margin-bottom: 0px" id = "price">
+          Price:
+        </p>
+        <div class="text-center">
+          <input type="submit" class="btn btn-primary mb-4 mt-4 " id="pay-btn" value = "Buy">
         </div>
         <input type="hidden" name="prop_id" value="{{prop.id}}">
         {% csrf_token %}
@@ -68,21 +81,21 @@
   <!-- Razorpay's Javascript code. -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script>
-    {
-      %
-      if razorpay_order_id %
-    }
-    var prefill = undefined {
-      %
-      if prefill %
-    }
-    var prefill = {
-      {
-        prefill | safe
-      }
-    } {
-      % endif %
-    }
+  function change_price(){
+    var shares = $('#no_of_shares').val()
+    $('#price').text("Price: Rs."+ shares*{{prop.price_per_share}})
+
+
+  }
+    var max_shares = Math.min( {{ prop.no_of_shares }} , 5)
+    $('#no_of_shares').attr( "max", max_shares )
+    $('#label_shares').text( "No of shares you want to buy (Max: " + max_shares + " )" )
+    {% if razorpay_order_id %}
+    var prefill = undefined
+    {% if prefill  %}
+    var prefill = {{prefill | safe }}
+
+    {% endif %}
     var options = {
 
       // Enter the Key ID generated from the Dashboard
@@ -105,9 +118,8 @@
     var rzp1 = new Razorpay(options);
     $('document').ready(function() {
       rzp1.open();
-    }); {
-      % endif %
-    }
+    });
+    {% endif %}
   </script>
 
 </body>

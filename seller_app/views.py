@@ -30,6 +30,7 @@ def finalized_price( proposed, predicted ):
 
 
 # Create your views here.
+@login_required(login_url='/login')
 def seller_home(request):
     return render(request, 'seller_home.html')
 
@@ -43,7 +44,8 @@ def sell_form(request):
         image = request.FILES['image']
         address = request.POST.get('address')
         area = request.POST.get('area')
-        City = request.POST.get('city')
+        City = request.POST.get('actual_city')
+        nearest_city = city.objects.get(id= request.POST.get('nearest_city'))
         state = request.POST.get('state')
         type_of_house = request.POST.get('type_of_house')  # BHK OR RK
         bhk = request.POST.get('bhk')  # no of Bedrooms
@@ -52,7 +54,7 @@ def sell_form(request):
         proposed_price = request.POST.get('p_price')
         phone_number = request.POST.get('number')
         email = request.POST.get('email')
-        predicted_price = predict(area, bhk, resale, rera_approved, City)
+        predicted_price = predict(area, bhk, resale, rera_approved, nearest_city.name)
         price_per_share = 1e5
         print(predicted_price)
 
@@ -65,21 +67,19 @@ def sell_form(request):
                      no_of_shares =max_no_of_shares,
                      price_per_share = price_per_share,
                      predicted_price=finalized_price(float(proposed_price), predicted_price),
-
+                    nearest_city = nearest_city
                     )
         p.save()
         seller = Seller( seller_details = request.user, proposed_price=proposed_price, property_details= p )
         seller.save()
 
-        subject = 'welcome to GFG world'
-        message = f'Hi, thank you for registering in geeksforgeeks.'
-        email_from = settings.EMAIL_HOST_USER
-        recipient_list = [email, ]
-        # send_mail(subject, message, email_from, recipient_list)
         return render(request, 'sell.html',{'success': "Your Response has been recorded, We'll reach out to you soon!"})
     else:
-        return render(request, 'sell.html')
 
+        cities = city.objects.all().order_by('name')
+        return render(request, 'sell.html', {'cities': cities})
+
+@login_required(login_url='/login')
 @require_http_methods( ['GET', 'POST']  )
 def approve_property(request,id):
     if request.method=='GET':

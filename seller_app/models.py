@@ -19,7 +19,7 @@ class Property(models.Model):
     price_per_share = models.FloatField(null=True, blank=True, default=None)
     predicted_price = models.FloatField(null=True, blank = True)
     approved = models.BooleanField(null=False, blank=False, default= False)
-
+    nearest_city = models.ForeignKey('city',on_delete =models.PROTECT, null=False)
 
 class Seller(models.Model):
     seller_details = models.ForeignKey(User, on_delete=models.CASCADE, null=False, default=None)
