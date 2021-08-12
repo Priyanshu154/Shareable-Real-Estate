@@ -42,21 +42,18 @@ h1{
   /* background-color:#FFF5AB; */
   font-weight:500;
 }
+
 .btn{
   background-color: rgb(230, 202, 81) !important;
   border: rgb(41, 41, 41) !important;
 }
+
 .btn:hover{
   background-color: rgb(209, 165, 44) !important;
   border: rgb(49, 49, 49) !important;
   border-width: 1rem;
 }
-p{
-  border: 0.1rem solid black;
-  border-radius: 2%;
-  padding: 2%;
-  font-weight: 500;
-}
+
 nav{
   border-bottom: 0.1rem solid black;
 }
