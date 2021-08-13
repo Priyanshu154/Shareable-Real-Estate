@@ -93,5 +93,6 @@ def approve_property(request,id):
             return redirect('home')
         else:
             prop.approved = True
+            prop.actual_price = prop.predicted_price
             prop.save()
             return render(request,'approve.html', {'prop': prop,'status': True})
