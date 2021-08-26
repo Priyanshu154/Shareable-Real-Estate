@@ -20,6 +20,10 @@ class Property(models.Model):
     predicted_price = models.FloatField(null=True, blank = True)
     approved = models.BooleanField(null=False, blank=False, default= False)
     nearest_city = models.ForeignKey('city',on_delete =models.PROTECT, null=False)
+    property_date = models.DateField(auto_now_add=True,null=True, blank=True)
+    property_active = models.BooleanField(default=True,null=True, blank=True)
+    sold_price = models.FloatField(null=True, blank=True, default=None)
+    property_date.editable = True
 
 class Seller(models.Model):
     seller_details = models.ForeignKey(User, on_delete=models.CASCADE, null=False, default=None)

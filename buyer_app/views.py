@@ -117,7 +117,7 @@ def buy(request,id):
 
 @login_required(login_url='/login')
 def buyer_home(request):
-    list_of_prop = Property.objects.filter(no_of_shares__gt = 0, approved =True, ).exclude( seller__seller_details = request.user )
+    list_of_prop = Property.objects.filter(no_of_shares__gt = 0, approved =True,property_active=True ).exclude( seller__seller_details = request.user )
     return render(request, 'buyer_home.html',{'list':list_of_prop})
 
 

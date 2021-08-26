@@ -14,7 +14,7 @@ with open('seller_app/model_pickle', 'rb') as f:
     # print(ob)
 
 def predict(area,bhk,resale,rera_approved, c):
-    c = city.objects.get(name = c.lower())
+    c = city.objects.get(name = c)
     features = np.array([[
         float(area), float(bhk) if bhk != '' else 1, 0 if bhk != '' else 1, int(resale), int(rera_approved),
         c.latitude, c.longitude
@@ -45,6 +45,7 @@ def sell_form(request):
         address = request.POST.get('address')
         area = request.POST.get('area')
         City = request.POST.get('actual_city')
+        print(request.POST.get('nearest_city'))
         nearest_city = city.objects.get(id= request.POST.get('nearest_city'))
         state = request.POST.get('state')
         type_of_house = request.POST.get('type_of_house')  # BHK OR RK
