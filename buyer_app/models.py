@@ -11,4 +11,3 @@ class Buyer(models.Model):
     buyer_date = models.DateField(auto_now_add=True, null=False, blank=False)
     buyer_active = models.BooleanField(default=True,null=False, blank=False)
     transaction_id = models.TextField(null=True, blank=True)
-    buyer_date.editable =True
