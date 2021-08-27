@@ -43,7 +43,7 @@
       </div>
     </div>
   </nav>
-
+    <h2 class="alert text-center alert-success"> Balance: ₹ {{ balance }} </h2>
   <div class="section">
     <h1> Bought Shares</h1>
     <div class="container">
@@ -54,9 +54,15 @@
             <img src="{{ b.buyer_property.prop_image.url }}" style="height:300px;" class="card-img-top center" alt="card-img- {{ b.buyer_property.id }}">
             <div class="card-body">
               <h5 class="card-title"> Shares purchased: {{b.buyer_shares}}</h5>
-              <p class="card-text">A {{ b.buyer_property.area }} Sq.Ft. Propery In {{ b.buyer_property.city }}, {{ b.buyer_property.state }}</p>
+              <p class="card-text">
+
+                A {{ b.buyer_property.area }} Sq.Ft. Propery In {{ b.buyer_property.city }}, {{ b.buyer_property.state }}
+              </p>
+              <p class = "card-text">
+                Date of Buying: {{b.buyer_date }}
+              </p>
               <div class="text-center">
-                <a href="{% url 'buy' b.buyer_property.id  %}" class="btn btn-primary">View Property</a>
+                <a href="{% url 'buy_share' b.buyer_property.id  %}" class="btn btn-primary">View Property</a>
               </div>
             </div>
           </div>
@@ -71,6 +77,7 @@
 
   <div class="section">
     <h1> Properties Sold to us</h1>
+
     <div class="container">
       <div class="row">
         {% for s in seller %}

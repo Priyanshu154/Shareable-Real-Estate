@@ -13,9 +13,8 @@
 <!--  <img src="{{prop.prop_image.url}}" class="card-img-top" alt="...">-->
   <div class="card-body text-danger">
     <h5 class="card-title">Purchase Failed</h5>
-      <p class="card-text">
-      There is some error regarding the payment.
-          If money is deducted, then it will be refunded in 5-7 days.
+      <p class="card-text alert alert-danger">
+      {{ msg }}
       </p>
     <a href="/" class="btn btn-success">Go To Home</a>
   </div>

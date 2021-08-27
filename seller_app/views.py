@@ -1,10 +1,13 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseBadRequest
 from django.shortcuts import render, redirect
 import pickle
 import os
 from django.core.mail import send_mail
 from django.views.decorators.http import require_http_methods
 
+from homepage_app.handle_transactions import make_transaction
+from homepage_app.models import Person
 from real_estate_project import settings
 from .models import city, Property, Seller
 from xgboost import XGBRegressor
@@ -56,7 +59,7 @@ def sell_form(request):
         phone_number = request.POST.get('number')
         email = request.POST.get('email')
         predicted_price = predict(area, bhk, resale, rera_approved, nearest_city.name)
-        price_per_share = 1e5
+        price_per_share = 1e4
         print(predicted_price)
 
         max_no_of_shares = finalized_price(float(proposed_price), predicted_price)/price_per_share
@@ -95,5 +98,17 @@ def approve_property(request,id):
         else:
             prop.approved = True
             prop.actual_price = prop.predicted_price
+            #TRANSFER MONEY
+
+            seller = Seller.objects.get(seller_details=request.user)
+            person = Person.objects.get( user= request.user )
+            res= make_transaction(debitID= settings.ADMIN_ACCOUNT_ID, creditID= person.account_id, amount = prop.actual_price
+                                  ,remarks = "SRE Sell")
+
+            if res == -1:
+                return HttpResponseBadRequest()
+
+            seller.transaction_id = res['transferID']
+            seller.save()
             prop.save()
             return render(request,'approve.html', {'prop': prop,'status': True})

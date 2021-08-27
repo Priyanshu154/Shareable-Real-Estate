@@ -20,6 +20,12 @@
 
   <link rel="stylesheet" href="/static/css/buy.css">
   <link rel="stylesheet" href="{% static '/css/home.css' %}"> <!-- Home page app's Home.css -->
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -58,21 +64,49 @@
         {%endif%}
 
       </ul>
-      <form action='' method="post">
+      <form action="{% url 'buy_share' prop.id  %}" method="post">
         <label for="no_of_shares" id = "label_shares"></label>
         <input id="no_of_shares" type="number" min="1" max="max_shares" name="no_of_shares" onchange="change_price()" onclick = "change_price()"required>
         <p style="border: None; margin-bottom: 0px" id = "price">
           Price:
         </p>
+        <!-- Button trigger modal -->
         <div class="text-center">
-          <input type="submit" class="btn btn-primary mb-4 mt-4 " id="pay-btn" value = "Buy">
-        </div>
+        <button type="button" class="btn btn-primary mb-4 mt-4" data-toggle="modal" data-target="#confirm">
+          Buy Share
+        </button>
+         </div>
+
+<!--        <div class="text-center">-->
+<!--          <input type="submit" class="btn btn-primary mb-4 mt-4 " id="pay-btn" value = "Buy">-->
+<!--        </div>-->
         <input type="hidden" name="prop_id" value="{{prop.id}}">
         {% csrf_token %}
 
+<!-- Modal -->
+<div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure? </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to purchase this share?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        <input type="submit" class="btn btn-primary" value = "Yes" >
+      </div>
+    </div>
+  </div>
+</div>
       </form>
     </div>
   </section>
+
 
 
   <script src="/static/js/buy.js" charset="utf-8"></script>

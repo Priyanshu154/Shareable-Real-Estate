@@ -31,8 +31,19 @@ ALLOWED_HOSTS = ['192.168.0.106','localhost', 'shareable-real-estate.herokuapp.c
 RAZOR_KEY_ID = "rzp_test_Xx2uoyrz9mcc8g"
 RAZOR_KEY_SECRET = "iNCMtMDwbeiKS8HVBILcXhkm"
 
-
-
+BUNDLE_ID = "4d49a901-4734-4852-ab52-fed7ca0070ec"
+FUNDING_ID = "487fedb8-a30b-48f7-9575-5f20d8be9889"
+AUTH_TOKEN = "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidGFnIjoiX3RoZU13ODh5MEZOdlNBMDZzU1FwUSIsImFsZyI6IkExMjhHQ01LVyIsIml2IjoibDlpNU9xUUlaY0piQTF4aiJ9.4zhgblK7DTV6HOlPS5a0z2mFL6cgIcGWCHVKRz9jy2k.uZmP8gikbjUSDwyAWCe6Cw.QJSJx_Wm8wmZbeBDci2s7lY6-yNTUorI7Ut4pmltJGo2A4MdPIF1MWA3gFPSgeiCWXInJUSOe3oD0jE8tL1Bv6VXm9prlVq2gy5f0ak3hw9YD1W8kvROP2JnhyBCuqVnr7XOFx1luSb1euG-Is-gNA70-cyfGUN3fY9lTxH7Y5FMvE506dgcaV2pWCHpZAXWC2TrTwDm3T5T54PwUp_Fnymf0yvYZ-JhChI7CfwK73Fh2L9OEw42TePvejBraHUAqwFARCltuhe2NM_IBHHefvkE5wetenZhb9W5U0hfxJofy7vgbNXddfNNVSPIeRMKdlEsCjvVrh6DzwmE5pxFcjRksSnmyYCahejiY9ywgs3R3PqiR1H73WuaRt-Y-wuCGwOcFQ6zn1-k2bnTKt_KbQ.5kdD6Ay8EMLmoUzqeGcOKw"
+IFI_ID = "140793"
+ZETA_BASE_URL = "https://fusion.preprod.zeta.in/api/v1/ifi/"+IFI_ID
+ADMIN_HOLDER_ID = "d3a12421-24f6-4e6e-98ac-3dbdddab8657"
+ADMIN_ACCOUNT_ID = "5a7c963d-4fcf-443c-860b-5b1511a10dfe"
+FUNDING_ID = "487fedb8-a30b-48f7-9575-5f20d8be9889"
+HEADERS = {
+    "X-Zeta-AuthToken" : AUTH_TOKEN,
+    "Content-Type": "application/json",
+    "Cache-Control" : 'no-cache'
+}
 DEFAULT_FROM_EMAIL = 'shareable.real.estate@gmail.com'
 SERVER_EMAIL = 'shareable.real.estate@gmail.com'
 # Application definition

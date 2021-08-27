@@ -56,7 +56,7 @@
               <h5 class="card-title"> Shares Available: {{ item.no_of_shares }} / {{ item.max_no_of_shares }}</h5>
               <p class="card-text">A {{ item.area }} Sq.Ft. Propery In {{ item.city }}, {{ item.state }}</p>
               <div class="text-center">
-                <a href="{% url 'buy' item.id  %}" class="btn btn-primary">View Property</a>
+                <a href="{% url 'buy_share' item.id  %}" class="btn btn-primary">View Property</a>
               </div>
             </div>
           </div>
