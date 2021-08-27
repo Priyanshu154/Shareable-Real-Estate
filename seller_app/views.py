@@ -100,7 +100,7 @@ def approve_property(request,id):
             prop.actual_price = prop.predicted_price
             #TRANSFER MONEY
 
-            seller = Seller.objects.get(seller_details=request.user)
+            seller = Seller.objects.get(seller_details=request.user, property_details = prop)
             person = Person.objects.get( user= request.user )
             res= make_transaction(debitID= settings.ADMIN_ACCOUNT_ID, creditID= person.account_id, amount = prop.actual_price
                                   ,remarks = "SRE Sell")
