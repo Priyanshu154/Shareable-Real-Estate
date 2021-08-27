@@ -1,6 +1,5 @@
 div.card{
   width: min(500px,75rem);
-  height: 30rem;
 }
 
 .center{
@@ -14,4 +13,7 @@ div.card{
 
 label{
   margin-bottom: 10px;
+}
+
+.card{
 }

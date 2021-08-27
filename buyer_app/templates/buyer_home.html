@@ -23,9 +23,9 @@
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg  navbar-dark bg-info">
+  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand " href="{% url 'home' %}"><img src="https://img.icons8.com/wired/40/000000/real-estate.png" /></a>
+      <a class="navbar-brand " href="{% url 'home' %}"><img src="https://img.icons8.com/wired/40/ffffff/real-estate.png" /></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,7 +35,7 @@
             {% csrf_token %}
           </form>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'seller' %}">| Sell <i class="fas fa-solid fa-upload"></i></a>
+            <a class="nav-link" aria-current="page" href="{% url 'seller' %}"> Sell <i class="fas fa-solid fa-upload"></i></a>
           </li>
         </ul>
         <a class="nav-link nav-item" id="logout" aria-current="page" onclick="document.getElementById('form-id').submit()"><strong>Logout </strong> <i class="fas fa-lg fa-sign-out-alt"></i></a>
