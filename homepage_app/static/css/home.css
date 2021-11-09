@@ -1,5 +1,4 @@
 /* This file is base css which is also for other files eg: navbar */
-
 #logout:hover{
   cursor: pointer;
 }
@@ -15,46 +14,19 @@
 .navbar-brand:hover{
     color: #272727 !important;
   }
-body{
-  background: linear-gradient(-45deg, #f4a38b, #ee77a5, #65c4e6, #65e6c8);
-	background-size: 1000vh 1000vh;
-  animation: gradient 15s ease infinite;
-}
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-body{
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-
-  }
-
-  /*body{
+  body{
     background-color: rgb(228, 247, 255) !important;
-    /* background-image: url(C:\\Users\\kedar\\Downloads\\Untitles.svg) !important;
-  }*/
+    /* background-image: url(C:\\Users\\kedar\\Downloads\\Untitles.svg) !important; */
+  }
   .nav-link{
-    color: rgb(230, 230, 230) !important;
+    color: rgb(70, 70, 70) !important;
     font-size: large;
     font-family: 'Atkinson Hyperlegible', sans-serif !important;
   }
 
   .nav-link:hover{
     color: rgb(238, 232, 232) !important;
-    border-top:0.1em solid red;
+    text-decoration: underline !important;
   }
 
   a.navbar-brand{
@@ -72,20 +44,16 @@ h1{
 }
 
 .btn{
-    font-weight: 500;
-    padding: 0.7em;
+  background-color: rgb(230, 202, 81) !important;
+  border: rgb(41, 41, 41) !important;
 }
 
-/*.btn:hover{
+.btn:hover{
   background-color: rgb(209, 165, 44) !important;
   border: rgb(49, 49, 49) !important;
   border-width: 1rem;
-}*/
+}
 
 nav{
   border-bottom: 0.1rem solid black;
-}
-
-#home_img{
-    margin-left: 5rem;
 }
