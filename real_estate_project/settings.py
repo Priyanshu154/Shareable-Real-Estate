@@ -26,7 +26,7 @@ SECRET_KEY = '$4l&awa%b^s-y(+c5o_n%3!ed$2x!)(gr(1jzacbb%@uj)a%3h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.106','localhost', 'shareable-real-estate.herokuapp.com']
+ALLOWED_HOSTS = ['192.168.0.106','localhost', 'shareable-real-estate.herokuapp.com', '*']
 
 RAZOR_KEY_ID = "rzp_test_Xx2uoyrz9mcc8g"
 RAZOR_KEY_SECRET = "iNCMtMDwbeiKS8HVBILcXhkm"
