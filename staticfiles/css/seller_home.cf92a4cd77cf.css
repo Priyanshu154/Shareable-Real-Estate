@@ -1,0 +1,10 @@
+#logout:hover{
+  cursor: pointer;
+}
+p{
+  border: 0.1rem solid black;
+  border-radius: 2%;
+  padding: 2%;
+  font-weight: 500;
+  text-align: left;
+}
