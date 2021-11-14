@@ -20,9 +20,9 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand " href="{% url 'home' %}"><img src="https://img.icons8.com/wired/40/000000/real-estate.png"/></a>
+        <a class="navbar-brand " href="{% url 'home' %}"><img src="https://img.icons8.com/wired/40/ffffff/real-estate.png"/></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,7 +66,7 @@
           <p id="para" >
             We all buy Estate, either to live in or as an Asset.
             But not Everyone is able to bestow such vanity especially if the sum is large.
-            And hence for the people like those Us at SRE's (ShareAble Real Estates) 
+            And hence for the people like those, us at SRE's (ShareAble Real Estates)
             have come up with a solution to all of it.
             We at SRE's would buy the whole Estate itself for our clients to invest in, through us..
             our clients can buy the property or partial bonds of them in a joint venture, and when the capital rises
@@ -79,24 +79,24 @@
 
               <form class="text-center" action="" {% url 'home' %}"" method="post">
                 {% csrf_token %}
-                <button class="btn btn-primary btn-lg" type="submit" name="buyer" value="Buyer">Buy Real Estate.</button>
+                <button class="btn btn-outline-dark" type="submit" name="buyer" value="Buyer">Buy Real Estate.</button>
 
-                <button class="btn btn-primary btn-lg" type="submit" name="seller" value="Seller">Sell Real Estate.</button>
+                <button class="btn btn-outline-dark" type="submit" name="seller" value="Seller">Sell Real Estate.</button>
               </form>
 
               {% else %}
               <form class="text-center" action="" {% url 'home' %}"" method="post">
                 {% csrf_token %}
-                <button class="btn btn-lg" type="submit" name="login" value="Login">Login<i class="fas fa-solid fa-square-arrow-right"></i></button>
+                <button class="btn btn-lg btn-outline-dark" type="submit" name="login" value="Login">Login<i class="fas fa-solid fa-square-arrow-right"></i></button>
 
-                <button class="btn btn-lg" type="submit" name="signup" value="Signup">Signup<i class="fas fa-solid fa-square-arrow-right"></i></button>
+                <button class="btn btn-lg btn-outline-dark" type="submit" name="signup" value="Signup">Signup<i class="fas fa-solid fa-square-arrow-right"></i></button>
               </form>
               {% endif %}
 
             </div>
         </div>
         <div class="mt-sm-12 ml-lg-4 col-lg-7 col-sm-12 col-md-12">
-          <img class="img-fluid"src="{% static 'photos/undraw_For_sale_re_egkk.svg' %}" alt="Sorry! there must be a problem in loading the image!">
+          <img class="img-fluid" id="home_img" src="{% static 'photos/undraw_For_sale_re_egkk.svg' %}" alt="Sorry! there must be a problem in loading the image!">
         </div>
       </div>
 
